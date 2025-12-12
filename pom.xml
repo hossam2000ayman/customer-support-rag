@@ -69,6 +69,9 @@
             <artifactId>spring-ai-starter-model-ollama</artifactId>
             <groupId>org.springframework.ai</groupId>
         </dependency>
+        <dependency>
+            spring-webflux
+        </dependency>
     </dependencies>
 
     <build>
