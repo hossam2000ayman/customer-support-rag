@@ -18,6 +18,9 @@ public class IngestionJob {
 
     private String status;
 
+    @Column(name = "object_name")
+    private String objectName;
+
     private Instant createdAt;
 
     private Instant updatedAt;

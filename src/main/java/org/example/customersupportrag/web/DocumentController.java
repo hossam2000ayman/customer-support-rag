@@ -31,15 +31,16 @@ public class DocumentController {
 
         UUID jobId = UUID.randomUUID();
 
-        // 1️⃣ create job
+        // 1️⃣ upload file to MinIO
+        String objectName = objectStorageService.upload(jobId, file);
+
+        // 2️⃣ create job
         IngestionJob job = new IngestionJob();
         job.setId(jobId);
         job.setFilename(file.getOriginalFilename());
         job.setStatus("CREATED");
+        job.setObjectName(objectName);
         ingestionJobRepository.save(job);
-
-        // 2️⃣ upload file to MinIO
-        objectStorageService.upload(jobId, file);
 
         // 3️⃣ respond immediately
         return ResponseEntity.accepted().body(
